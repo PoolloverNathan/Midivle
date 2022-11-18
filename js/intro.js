@@ -28,24 +28,31 @@ function loading1() {
   // if (localStorage.inco === true) {
   document.getElementById("introText").innerHTML = "Loading." + add
   // }
-  setTimeout(loading1, 3000)
+  cancelOnReactSetup.push(setTimeout(loading1, 3000))
 }
 
 function loading2() {
   document.getElementById("introText").innerHTML = "Loading.." + add
-  setTimeout(loading2, 3000)
+  cancelOnReactSetup.push(setTimeout(loading2, 3000))
 }
 
 function loading3() {
   document.getElementById("introText").innerHTML = "Loading..." + add
-  setTimeout(loading3, 3000)
+  cancelOnReactSetup.push(setTimeout(loading3, 3000))
 }
 
+const cancelOnReactSetup = []
 if (localStorage.inco) {
-  setTimeout(loading1, 0);
-  setTimeout(loading2, 1000);
-  setTimeout(loading3, 2000);
+  cancelOnReactSetup.push(setTimeout(loading1, 0));
+  cancelOnReactSetup.push(setTimeout(loading2, 1000));
+  cancelOnReactSetup.push(setTimeout(loading3, 2000));
   // Future function to load all game UI will go here
+  setTimeout(() => {
+    cancelOnReactSetup.map(t => clearTimeout(t))
+    const container = document.getElementsByTagName("body")[0] // gets the body as the container
+    const root = ReactDOM.createRoot(container) // gives the body to React - this will replace the entire body!
+    root.render(<App />) // actually renders the app, you may notice this looks a bit like HTML
+  }, 500) // change this to make the game load faster
 }
 
 if (!localStorage.inco) {

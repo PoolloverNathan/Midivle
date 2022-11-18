@@ -1,7 +1,47 @@
 body {
-  font-family: 'Brush Script MT', cursive;
+/*   font-family: 'Brush Script MT', cursive; */
+  font-family: Roboto;
   margin: 0;
   padding: 0;
+  background: #093145;
+  color: #ffffff;
+}
+
+#reactroot {
+  position: absolute;
+  width: 100%;
+  height:100%;
+  left:0;
+  top: 0;
+  display: grid;
+  --gap: 8q;
+  grid-template-rows: var(--gap) 1fr var(--gap) min-content;
+  grid-template-columns: var(--gap) 1fr var(--gap);
+  grid-template-areas:
+    ". .    ."
+    ". area ."
+    ". .    ."
+    ". opts ."
+}
+
+#reactroot > div {
+  border: thin solid whitesmoke;
+}
+
+#reactroot > .area {
+  grid-area: area;
+}
+
+#reactroot > .options {
+  grid-area: opts;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-content: flex-start;
+}
+
+#reactroot > .options > button {
+  flex: 0 1 1in;
 }
 
 .introScreen div {
@@ -28,6 +68,4 @@ body {
   border: 0px solid lightgreen;
   display: table-cell;
   vertical-align: middle;
-  background: #093145;
-  color: #ffffff;
 }
