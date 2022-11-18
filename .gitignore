@@ -2,3 +2,4 @@ clone_gpg.sh
 repo_setup.sh
 .replit
 replit.nix
+js/swloader.js
