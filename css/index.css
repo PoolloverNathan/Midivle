@@ -5,6 +5,7 @@ body {
   padding: 0;
   background: #093145;
   color: #ffffff;
+  overflow: hidden;
 }
 
 #reactroot {
@@ -15,7 +16,7 @@ body {
   top: 0;
   display: grid;
   --gap: 8q;
-  grid-template-rows: var(--gap) 1fr var(--gap) min-content;
+  grid-template-rows: var(--gap) 1fr var(--gap) 1cm;
   grid-template-columns: var(--gap) 1fr var(--gap);
   grid-template-areas:
     ". .    ."
@@ -30,6 +31,14 @@ body {
 
 #reactroot > .area {
   grid-area: area;
+}
+
+#reactroot > .area-image {
+  grid-area: area;
+  border-image: url("../png/border2.png");
+  border-image-slice: 512;
+  border-image-repeat: round;
+  border-width: 32px;
 }
 
 #reactroot > .options {
